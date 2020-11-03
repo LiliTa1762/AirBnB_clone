@@ -28,27 +28,37 @@ class HBNBCommand(cmd.Cmd):
                "City", "Amenity", "Place", "Review"]
 
     def do_EOF(self, line):
+        """Method for quit the console"""
         return True
 
     def help_EOF(self):
+        """Message when asking what EOF do"""
         print('\n'.join([
             "Quit command to exit the program",
             "\n"
         ]))
 
     def do_quit(self, line):
+        """Method for quit the console"""
         return True
 
     def help_quit(self):
+        """Message when asking what quit do"""
         print('\n'.join([
             "Quit command to exit the program",
             "\n"
         ]))
 
     def emptyline(self):
+        """Method for an empty line"""
         pass
 
     def default(self, args):
+        """Reports an error
+
+        Args:
+            Any unknown command
+        """
         print("*** Unknown syntax:", args)
 
     def do_create(self, args):
