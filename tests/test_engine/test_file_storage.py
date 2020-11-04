@@ -6,7 +6,7 @@ Unittest for FileStorage class
 
 import json
 import inspect
-from models.file_storage import FileStorage
+from models.engine.file_storage import FileStorage
 import pep8
 import unittest
 
@@ -45,18 +45,22 @@ class Test_FileStorage(unittest.TestCase):
 
     def test_check_json_loading(self):
         """Checks if FileStorage works."""
-
         with open("file.json") as f:
             dic = json.load(f)
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_b_all(self):
-        """Checks the all method"""
+        """Checks the all method is not None"""
         obj = self.storage.all()
         self.assertIsNotNone(obj)
 
+    def test_c_all(self):
+        """Checks the type of all method"""
+        obj = self.storage.all()
+        self.assertEqual(type(obj), dict)
 
-    def test_c_functions(self):
+
+    def test_d_functions(self):
         """Checks if the functions are defined"""
         f = FileStorage()
 
