@@ -40,7 +40,7 @@ class Test_FileStorage(unittest.TestCase):
     """Checking functionality of FileStorage"""
 
     def test_a_storage_type(self):
-        """Check the type of storage"""
+        """Checks the type of storage"""
         self.assertIsNotNone(self.storage.all())
 
     def test_check_json_loading(self):
@@ -49,11 +49,21 @@ class Test_FileStorage(unittest.TestCase):
         with open("file.json") as f:
             dic = json.load(f)
             self.assertEqual(isinstance(dic, dict), True)
-    
+
     def test_b_all(self):
-        """Check the all method"""
+        """Checks the all method"""
         obj = self.storage.all()
         self.assertIsNotNone(obj)
+
+
+    def test_c_functions(self):
+        """Checks if the functions are defined"""
+        f = FileStorage()
+
+        self.assertTrue(hasattr(f, 'all'))
+        self.assertTrue(hasattr(f, 'new'))
+        self.assertTrue(hasattr(f, 'reload'))
+        self.assertTrue(hasattr(f, 'save'))
 
 if __name__ == 'main':
     unittest.main()
