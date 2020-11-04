@@ -30,12 +30,12 @@ class Test_BaseModel_Docs(unittest.TestCase):
 
     def test_class_docstring(self):
         """BaseModel class docstring test"""
-        self.assertTrue(len(BaseModel._doc_) >= 1)
+        self.assertTrue(len(BaseModel.__doc__) >= 1)
 
     def test_functions_docstrings(self):
         """Presence of docstrings in all functions"""
         for function in self.base_model_funcs:
-            self.assertTrue(len(function[1]._doc_) >= 1)
+            self.assertTrue(len(function[1].__doc__) >= 1)
 
 
 class Test_BaseModel(unittest.TestCase):
@@ -46,5 +46,5 @@ class Test_BaseModel(unittest.TestCase):
         self.assertIn(BaseModel(), models.storage.all().values())
 
 
-if __name__ == '_main_':
+if __name__ == '__main__':
     unittest.main()
