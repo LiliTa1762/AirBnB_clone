@@ -19,7 +19,8 @@ class Test_BaseModel_Docs(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         """Setting for doc tests"""
-        self.base_model_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
+        self.base_model_funcs = inspect.getmembers(
+            BaseModel, inspect.isfunction)
 
     def test_pep8_conformance_base(self):
         """pep8 tests for BaseModel"""
@@ -37,12 +38,19 @@ class Test_BaseModel_Docs(unittest.TestCase):
         for function in self.base_model_funcs:
             self.assertTrue(len(function[1].__doc__) >= 1)
 
-    class Test_BaseModel(unittest.TestCase):
-        """Checking functionality of BaseModel"""
-        def test_a_id_value(self):
-            """Checking value of id"""
-            obj_id = BaseModel(121212)
-            self.assertEqual(obj_id, 121212)
+
+class Test_BaseModel(unittest.TestCase):
+    """Checking functionality of BaseModel"""
+
+    def test_a_id_value(self):
+        """Checking value of id"""
+        obj_id = BaseModel(121212)
+        self.assertEqual(obj_id, 121212)
+
+    def test_b_from_json_None(self):
+        """JSON with a None String"""
+        self.assertEqual([], BaseModel.test_b_from_json_None)
+
 
 if __name__ == '__main__':
     unittest.main()
