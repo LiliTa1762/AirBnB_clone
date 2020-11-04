@@ -4,9 +4,9 @@ Unittest for FileStorage class
 """
 
 
-from models.file_storage import FileStorage
 import json
 import inspect
+from models.file_storage import FileStorage
 import pep8
 import unittest
 
@@ -28,21 +28,32 @@ class Test_FileStorage_Docs(unittest.TestCase):
 
     def test_class_docstring(self):
         """FileStorage class docstring test"""
-        self.assertTrue(len(FileStorage._doc_) >= 1)
+        self.assertTrue(len(FileStorage.doc) >= 1)
 
     def test_functions_docstrings(self):
         """Presence of docstrings in all functions"""
         for function in self.file_storage_funcs:
-            self.assertTrue(len(function[1]._doc_) >= 1)
+            self.assertTrue(len(function[1].doc) >= 1)
 
 
 class Test_FileStorage(unittest.TestCase):
     """Checking functionality of FileStorage"""
 
-    def test_a_from_json_None(self):
-        """JSON with a None String"""
-        self.assertEqual([], FileStorage.test_b_from_json_None)
+    def test_a_storage_type(self):
+        """Check the type of storage"""
+        self.assertIsNotNone(self.storage.all())
 
+    def test_check_json_loading(self):
+        """Checks if FileStorage works."""
 
-if _name_ == '_main_':
+        with open("file.json") as f:
+            dic = json.load(f)
+            self.assertEqual(isinstance(dic, dict), True)
+    
+    def test_b_all(self):
+        """Check the all method"""
+        obj = self.storage.all()
+        self.assertIsNotNone(obj)
+
+if __name__ == 'main':
     unittest.main()
