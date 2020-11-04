@@ -4,14 +4,13 @@ Unittest for BaseModel class
 """
 
 
-from models.base_model import BaseModel
 import json
 import inspect
+from models.base_model import BaseModel
+from models import storage
+import models
 import pep8
 import unittest
-
-
-# BaseModel = base_model.BaseModel
 
 
 class Test_BaseModel_Docs(unittest.TestCase):
@@ -31,26 +30,21 @@ class Test_BaseModel_Docs(unittest.TestCase):
 
     def test_class_docstring(self):
         """BaseModel class docstring test"""
-        self.assertTrue(len(BaseModel.__doc__) >= 1)
+        self.assertTrue(len(BaseModel._doc_) >= 1)
 
     def test_functions_docstrings(self):
         """Presence of docstrings in all functions"""
         for function in self.base_model_funcs:
-            self.assertTrue(len(function[1].__doc__) >= 1)
+            self.assertTrue(len(function[1]._doc_) >= 1)
 
 
 class Test_BaseModel(unittest.TestCase):
     """Checking functionality of BaseModel"""
 
-    def test_a_id_value(self):
-        """Checking value of id"""
-        obj_id = BaseModel(121212)
-        self.assertEqual(obj_id, 121212)
-
-    def test_b_from_json_None(self):
-        """JSON with a None String"""
-        self.assertEqual([], BaseModel.test_b_from_json_None)
+    def test_a_new_instance_stored(self):
+        """New instance stored in objects"""
+        self.assertIn(BaseModel(), models.storage.all().values())
 
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     unittest.main()
