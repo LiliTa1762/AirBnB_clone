@@ -46,5 +46,5 @@ class Test_BaseModel(unittest.TestCase):
         self.assertIn(BaseModel(), models.storage.all().values())
 
 
-if _name_ == '_main_':
+if __name__ == '_main_':
     unittest.main()
