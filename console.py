@@ -147,24 +147,24 @@ class HBNBCommand(cmd.Cmd):
         args = args.split()
         if len(args) == 0:
             print("** class name missing **")
-            print(self.objects)
-        else:
-            if args[0] in self.classes:
-                if len(args) == 1:
-                    print("** instance id missing **")
-                elif args[1] in self.objects:
-                    if len(args) == 2:
-                        print("** attribute name missing **")
-                    else:
-                        if len(args) == 3:
-                            print("** value missing **")
+        elif args[0] in self.classes:
+            if len(args) > 1:
+                key = args[0] + "." + args[1]
+                if key in self.objects:
+                    if len(args) > 2:
+                        if len(args) > 3:
+                            setattr(self.objects[key], args[2], args[3])
+                            self.objects[key].save()
                         else:
-                            # for key, value in HBNBCommand.objects.items():
-                            print("Ahora, guarda en json")
+                            print("** value missing **")
+                    else:
+                        print("** attribute name missing **")
                 else:
                     print("** no instance found **")
             else:
-                print("** class doesn't exist **")
+                 print("** instance id missing **")
+        else:
+            print("** class doesn't exist **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
