@@ -1,0 +1,53 @@
+.filters{
+	color: white;
+	height: 70px;
+	width: 1000px;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	display: flex; /* Permite que padre mueva todo lo siguiente */
+    align-items: center; /* centrar verticalmente */
+	justify-content: space-between; /* Moverlo horizontalmente */
+	flex-direction: row-reverse;
+}
+
+button {
+	font-size: 18px;
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	height: 48px;
+	width: 200px;
+	border: 0px;
+	border-radius: 4px;
+	float: right;
+	margin-right: 30px;
+	cursor: pointer;
+}
+
+button:hover {
+	opacity: 0.9;
+}
+
+.amenities {
+	height: 100%;
+	width: 250px;
+}
+
+.locations {
+	height: 100%;
+	width: 250px;
+	border-right: 1px solid #DDDDDD;
+ 	margin-left: 30px;
+
+}
+
+h3 {
+	font-weight: 600;
+	color: black;
+}
+
+h4 {
+	font-weight: 400;
+	font-size: 14px;
+	color: black;
+	margin-top: -15px;
+}
